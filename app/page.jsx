@@ -1,5 +1,7 @@
 import { getResources } from '../lib/notion';
+
 export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const resources = await getResources();
 
@@ -7,10 +9,9 @@ export default async function Home() {
     <main className="max-w-6xl mx-auto px-6 py-16">
       <h1 className="text-4xl font-bold mb-4">Resources</h1>
       <p className="text-gray-500 mb-12">A curated list of tools, articles and guides.</p>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources.map((resource) => (
-         <a
+          <a
             key={resource.id}
             href={resource.url}
             target="_blank"
