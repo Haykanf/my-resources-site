@@ -6,26 +6,33 @@ export default async function Home() {
   const resources = await getResources();
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold mb-4">Resources</h1>
-      <p className="text-gray-500 mb-12">A curated list of tools, articles and guides.</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="max-w-6xl mx-auto px-6 py-16">
+      <h1 className="text-5xl font-bold mb-3 tracking-tight">Resources</h1>
+      <p className="text-gray-400 text-lg mb-12">A curated list of tools, articles and guides.</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {resources.map((resource) => (
           <a
             key={resource.id}
             href={resource.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
+            className="group flex flex-col border border-gray-200 rounded-2xl p-6 hover:border-gray-400 hover:shadow-lg transition-all duration-200"
           >
-            <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+            <span className="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">
               {resource.category}
             </span>
-            <h2 className="text-lg font-semibold mt-2 mb-1">{resource.title}</h2>
-            <p className="text-gray-500 text-sm">{resource.description}</p>
+            <h2 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              {resource.title}
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed flex-1">
+              {resource.description}
+            </p>
+            <span className="mt-4 text-xs text-gray-300 group-hover:text-blue-400 transition-colors">
+              Read more →
+            </span>
           </a>
         ))}
       </div>
-    </main>
+    </div>
   );
 }
